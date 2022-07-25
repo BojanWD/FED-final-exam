@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="col">
+    <div class="form-group">
+        <label for="from">From</label>
+        <select class="form-control" id="from" name="from" [(ngModel)]="params.filter.from" (change)="onFilterFromTo()">
+            <option value="Any">Any</option>
+            <option *ngFor="let station of stationsResult" value="{{station.name}}" >{{station.name}}</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="to">To</label>
+        <select class="form-control" id="to" name="to" [(ngModel)]="params.filter.to" (change)="onFilterFromTo()">
+            <option value="Any">Any</option>
+            <option *ngFor="let station of stationsResult" value="{{station.name}}">{{station.name}}</option>
+        </select>
+      </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>From</th>
+          <th>Departure</th>
+          <th>To</th>
+          <th>Arrival</th>
+          <th>Travels</th>
+          <th>Type</th>
+          <th>Price</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let train of trains.results">
+          <td>{{ train.number }}</td>
+          <td>{{ train.from }}</td>
+          <td>{{ train.departure | date: "dd.MM.yyyy HH:mm" }}</td>
+          <td>{{ train.to }}</td>
+          <td>{{ train.arrival | date: "dd.MM.yyyy HH:mm" }}</td>
+          <td>{{ getHourMin(train.travels)  }}</td>
+          <td
+            *ngIf="train.type === 'brzi' || train.type === 'regio' || train.type === 'train'"
+          >
+            <img src="assets/images/{{ train.type }}.jpg" alt="">
+            
+          </td>
+          <td
+          *ngIf="train.type === 'inter-city'"
+        >
+          <img src="assets/images/{{ train.type }}.svg" alt="">
+          
+        </td>
+          <td>{{ train.price }}rsd</td>
+          <td><button class="btn btn-primary" [routerLink]="['/details/', train._id]">Details</button></td>
+          <td><button class="btn btn-primary" [routerLink]="['/buyticket/', train._id]">Buy ticket</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="row justify-content-center">
+  <div class="col-6">
+    <table class="table">
+      <thead>
+        <tr class="table-dark">
+          <th>Stations</th>
+          <th>Arrival</th>
+          <th>Departure</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let station of train.stations">
+          <td>{{ station.name }}</td>
+          <td>{{ station.arrival | date: "HH:mm" }}</td>
+          <td>{{ station.departure | date: "HH:mm" }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <div class="col-6 text-center">
+    <button class="btn btn-primary my-2" [routerLink]="['/buyticket/', train._id]">Buy ticket</button>
+  </div>
+</div>

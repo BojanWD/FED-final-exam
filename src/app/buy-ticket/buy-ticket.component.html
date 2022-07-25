@@ -1,0 +1,130 @@
+<form>
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="form-group">
+        <label class="my-1">Train Number</label>
+        <input
+          type="number"
+          class="form-control"
+          id="tnum"
+          name="tnum"
+          [readonly]="true"
+          [(ngModel)]="train.number"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-3">
+      <div class="form-group">
+        <label class="my-1">From</label>
+        <input
+          type="text"
+          class="form-control"
+          id="from"
+          name="from"
+          [readonly]="true"
+          [(ngModel)]="train.from"
+        />
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="form-group">
+        <label class="my-1">Departure</label>
+        <!-- <input
+          datetime="yyyy-MM-ddTHH:mm"
+          type="datetime"
+          class="form-control"
+          id="dep"
+          name="dep"
+          [readonly]="true"
+          [(ngModel)]="train.departure "
+
+        /> -->
+        <p class="form-control" readonly>{{train.departure | date: 'yyyy-MM-dd HH:mm a'}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-3">
+      <div class="form-group">
+        <label class="my-1">To</label>
+        <input
+          type="text"
+          class="form-control"
+          id="to"
+          name="to"
+          [readonly]="true"
+          [(ngModel)]="train.to"
+        />
+        
+      </div>
+    </div>
+    <div class="col-3">
+      <div class="form-group">
+        <label class="my-1">Arrival</label>
+        <!-- <input
+          datetime="yyyy-MM-ddTHH:mm"
+          type="text"
+          class="form-control"
+          id="arr"
+          name="arr"
+          [readonly]="true"
+          [(ngModel)]="train.arrival"
+        /> -->
+        <p class="form-control" readonly>{{train.arrival | date: 'yyyy-MM-dd HH:mm a'}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="form-group">
+        <label class="my-1">Price</label>
+        <input
+          type="number"
+          class="form-control"
+          id="price"
+          name="price"
+          [readonly]="true"
+          [(ngModel)]="train.price"
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="form-group">
+        <label class="my-1">Name</label>
+        <input
+          type="text"
+          class="form-control"
+          id="bname"
+          name="bname"
+          [(ngModel)]="ticket.name"
+          (change)="validateTicket()" 
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="form-group">
+        <label class="my-1">Birth Date</label>
+        <input
+          type="date"
+          class="form-control"
+          id="bd"
+          name="bd"
+          [(ngModel)]="ticket.birthDate"
+          (change)="validateTicket()" 
+        />
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-6 text-center">
+        <button class="btn btn-primary my-2" [disabled]="disabled" (click)="buyTicket()">Buy ticket</button>
+
+    </div>
+  </div>
+</form>

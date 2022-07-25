@@ -1,0 +1,60 @@
+<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+  <ngb-panel *ngFor="let ticket of ticketSearch.results">
+    <ng-template ngbPanelTitle>
+      <span
+        >{{ ticket.from }} ({{ ticket.departure | date: "dd.MM.yyyy HH:mm" }}) -
+        {{ ticket.to }} ({{ ticket.arrival | date: "dd.MM.yyyy HH:mm" }})</span
+      >
+    </ng-template>
+    <ng-template ngbPanelContent>
+      <div class="row">
+        <div class="col-10">
+          <div class="row">
+            <div class="col-6">
+              <p><b>Train number</b></p>
+            </div>
+            <div class="col-6">
+              <p>{{ ticket.number }}</p>
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-6">
+              <p><b>Price</b></p>
+            </div>
+            <div class="col-6">
+              <p>{{ ticket.price }}</p>
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-6">
+              <p><b>Name</b></p>
+            </div>
+            <div class="col-6">
+              <p>{{ ticket.name }}</p>
+            </div>
+          </div>
+          <hr />
+          <div class="row">
+            <div class="col-6">
+              <p><b>Birth date</b></p>
+            </div>
+            <div class="col-6">
+              <p>{{ ticket.birthDate | date: "dd.MM.YYYY" }}</p>
+            </div>
+          </div>
+          <hr class="dfm" />
+          <div class="row">
+            <div class="col-2">
+              <button class="btn btn-primary my-2" (click)="onDeleteTicket(ticket._id)">Cancel</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <img src="assets/images/qr.png" alt="" class="img-fluid" />
+        </div>
+      </div>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>
